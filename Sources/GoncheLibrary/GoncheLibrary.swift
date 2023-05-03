@@ -31,6 +31,11 @@ struct WrappedList<C>:FormatStyle where C: Collection
         }
         return outString
     }
+    
+    /// Public initializer so the static functions work.
+    public init(maxItems:Int = Int.max){
+        self.maxItems = maxItems
+    }
 }
 
 extension FormatStyle where Self == WrappedList<[String]>{
