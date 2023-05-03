@@ -39,7 +39,7 @@ public struct WrappedList<C>:FormatStyle where C: Collection
 }
 
 extension FormatStyle where Self == WrappedList<[String]>{
-    static func listWrapped(_ maxItems:Int = Int.max)-> WrappedList<[String]>{
+    public static func listWrapped(_ maxItems:Int = Int.max)-> WrappedList<[String]>{
         return WrappedList(maxItems: maxItems)
     }
 }
