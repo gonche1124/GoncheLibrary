@@ -9,17 +9,17 @@ public struct GoncheLibrary {
 
 ///
 /// Format a list  with a given number of elements and the rest is get labeled as " & more"
-struct WrappedList<C>:FormatStyle where C: Collection
+public struct WrappedList<C>:FormatStyle where C: Collection
 {
-    
-    typealias FormatInput =  C
-    typealias FormatOutput = String
-    
+
+    public typealias FormatInput =  C
+    public typealias FormatOutput = String
+
     //Standard: (and), short(&),, narrow(none)
-    
+
     let maxItems:Int
 
-    func format(_ value: C) -> String {
+    public func format(_ value: C) -> String {
         var outString = ""
         let totItems = value.count
         for (index, item) in value.enumerated(){
