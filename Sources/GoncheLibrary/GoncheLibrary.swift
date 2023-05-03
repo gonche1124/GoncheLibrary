@@ -1,6 +1,40 @@
+import SwiftUI
+
 public struct GoncheLibrary {
     public private(set) var text = "Hello, World!"
 
     public init() {
+    }
+}
+
+///
+/// Format a list  with a given number of elements and the rest is get labeled as " & more"
+struct WrappedList<C>:FormatStyle where C: Collection
+{
+    
+    typealias FormatInput =  C
+    typealias FormatOutput = String
+    
+    //Standard: (and), short(&),, narrow(none)
+    
+    let maxItems:Int
+
+    func format(_ value: C) -> String {
+        var outString = ""
+        let totItems = value.count
+        for (index, item) in value.enumerated(){
+            if index >= maxItems {
+                outString += " and \(totItems - index) more"
+                break
+            }
+            outString += ",\(item)"
+        }
+        return outString
+    }
+}
+
+extension FormatStyle where Self == WrappedList<[String]>{
+    static func listWrapped(_ maxItems:Int = Int.max)-> WrappedList<[String]>{
+        return WrappedList(maxItems: maxItems)
     }
 }
